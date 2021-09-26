@@ -1,0 +1,16 @@
+title Submit new note
+
+note over browser
+The new note was written.
+Save button clicked.
+end note 
+
+browser->server: HTTP POST  https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server
+Save the new note into notes array.
+Send redirect response to browser
+end note 
+
+server-->browser: redirect to /exampleapp/notes
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes

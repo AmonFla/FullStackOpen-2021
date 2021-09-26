@@ -1,0 +1,24 @@
+title SPA Access
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser
+The content of spa.js is executed.
+Execute AJAX request.
+end note 
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: Response: JSON data
+
+note over browser
+The JSON data is processed.
+The generate the Note List.
+end note
+
+
+

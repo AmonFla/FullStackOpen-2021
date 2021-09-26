@@ -1,0 +1,13 @@
+title SPA New Note
+
+note over browser
+The new note was written.
+Save button clicked.
+The JS is executed and get form information
+and create the JSON structure, and clean the text.
+The function redrawNotes() is executed
+Then sendToServer(note) is executed
+end note 
+
+browser->server: HTTP POST  https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: {"message":"note created"}
