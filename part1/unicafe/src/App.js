@@ -19,18 +19,18 @@ const Statistics = ({statistics}) => {
   const all = statistics.good+statistics.neutral+statistics.bad 
   if ( all  !== 0)
     return ( 
-        <>
-          <table>
-            <tbody>
-              <tr><StatisticLine text="Good" value={statistics.good} /></tr>
-              <tr><StatisticLine text="Neutral" value={statistics.neutral} /></tr>
-              <tr><StatisticLine text="Bad" value={statistics.bad} /></tr>
-              <tr><StatisticLine text="All" value={all} /></tr>
-              <tr><StatisticLine text="Average" value={(statistics.good*score.good+statistics.neutral*score.neutral+statistics.bad*score.bad) / all}/></tr>
-              <tr><StatisticLine text="Positive" value={statistics.good *100 / all}/></tr>
-            </tbody>
-          </table>
-        </> 
+      <>
+        <table>
+          <tbody>
+            <tr><StatisticLine text="Good" value={statistics.good} /></tr>
+            <tr><StatisticLine text="Neutral" value={statistics.neutral} /></tr>
+            <tr><StatisticLine text="Bad" value={statistics.bad} /></tr>
+            <tr><StatisticLine text="All" value={all} /></tr>
+            <tr><StatisticLine text="Average" value={(statistics.good*score.good+statistics.neutral*score.neutral+statistics.bad*score.bad) / all}/></tr>
+            <tr><StatisticLine text="Positive" value={statistics.good *100 / all}/></tr>
+          </tbody>
+        </table>
+      </> 
     )
   return(
     <p>
