@@ -17,17 +17,20 @@ const Avg = ({statistics}) => {
 }
 
 const Statistics = ({statistics}) => {
-  return (
-    <>
-      <h1>Statistics</h1>
-      <p>
-        <Statistic text="Good" value={statistics.good} />
-        <Statistic text="Neutral" value={statistics.neutral} />
-        <Statistic text="Bad" value={statistics.bad} />
-        <Avg statistics={statistics} />
-      </p>
-    </>
-  )
+  if (statistics.good+statistics.neutral+statistics.bad  !== 0)
+    return ( 
+        <p>
+          <Statistic text="Good" value={statistics.good} />
+          <Statistic text="Neutral" value={statistics.neutral} />
+          <Statistic text="Bad" value={statistics.bad} />
+          <Avg statistics={statistics} />
+        </p> 
+    )
+  return(
+    <p>
+      No feedback given
+    </p>
+  );
 }
 const App = () => {
   const [statistics, setStatistics] = useState({
@@ -48,6 +51,7 @@ const App = () => {
       <Button onClick={clickNeutral} text="Neutral"  />
       <Button onClick={clickBad} text="Bad"  />
       <br />
+      <h1>Statistics</h1>
       <Statistics statistics={statistics} />
     </div>
   )
