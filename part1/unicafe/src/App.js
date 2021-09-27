@@ -4,6 +4,18 @@ const Button = ({onClick,text}) => <button onClick={onClick}>{text}</button>
 
 const Statistic = ({text, value}) => <>{text} {value} <br /></>
 
+const Avg = ({statistics}) => {
+  const score = {good:1, neutral:0,bad:-1}
+  const all = statistics.good+statistics.neutral+statistics.bad
+  
+  return (
+    <>
+      All: {all} <br />
+      Average: {(statistics.good*score.good+statistics.neutral*score.neutral+statistics.bad*score.bad) / all} <br />
+      Positive: {statistics.good *100 / all}
+    </>
+  )
+}
 
 const App = () => {
   const [statistics, setStatistics] = useState({
@@ -29,6 +41,7 @@ const App = () => {
         <Statistic text="Good" value={statistics.good} />
         <Statistic text="Neutral" value={statistics.neutral} />
         <Statistic text="Bad" value={statistics.bad} />
+        <Avg statistics={statistics} />
       </p>
     </div>
   )
