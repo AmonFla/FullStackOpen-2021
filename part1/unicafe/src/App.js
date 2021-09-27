@@ -12,29 +12,25 @@ const Buttons = ({actions}) =>{
   )
 }
 
-const StatisticLine= ({text, value}) => <>{text} {value} <br /></>
-
-const Avg = ({statistics}) => {
-  const score = {good:1, neutral:0,bad:-1}
-  const all = statistics.good+statistics.neutral+statistics.bad 
-  return (
-    <>
-      All: {all} <br />
-      Average: {(statistics.good*score.good+statistics.neutral*score.neutral+statistics.bad*score.bad) / all} <br />
-      Positive: {statistics.good *100 / all}
-    </>
-  ) 
-}
+const StatisticLine= ({text, value}) => <><td>{text}</td><td>{value}</td></>
 
 const Statistics = ({statistics}) => {
-  if (statistics.good+statistics.neutral+statistics.bad  !== 0)
+  const score = {good:1, neutral:0,bad:-1}
+  const all = statistics.good+statistics.neutral+statistics.bad 
+  if ( all  !== 0)
     return ( 
-        <p>
-          <StatisticLine text="Good" value={statistics.good} />
-          <StatisticLine text="Neutral" value={statistics.neutral} />
-          <StatisticLine text="Bad" value={statistics.bad} />
-          <Avg statistics={statistics} />
-        </p> 
+        <>
+          <table>
+            <tbody>
+              <tr><StatisticLine text="Good" value={statistics.good} /></tr>
+              <tr><StatisticLine text="Neutral" value={statistics.neutral} /></tr>
+              <tr><StatisticLine text="Bad" value={statistics.bad} /></tr>
+              <tr><StatisticLine text="All" value={all} /></tr>
+              <tr><StatisticLine text="Average" value={(statistics.good*score.good+statistics.neutral*score.neutral+statistics.bad*score.bad) / all}/></tr>
+              <tr><StatisticLine text="Positive" value={statistics.good *100 / all}/></tr>
+            </tbody>
+          </table>
+        </> 
     )
   return(
     <p>
