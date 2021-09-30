@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react' 
+import servPerson from './services/persons'
 import Persons from './components/Persons'
 import Search from './components/Search'
 import NewPerson from './components/NewPerson'
@@ -11,9 +11,7 @@ const App = () => {
   const [ filter, setFilter ] = useState('')
 
   useEffect(()=>{
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => setPersons(response.data))
+    servPerson.getAll().then(persons => setPersons(persons))
   },[])
   
   const saveName=(event)=>{
@@ -26,10 +24,9 @@ const App = () => {
         number: newNumber,
         id: persons.length + 1
       }
-      axios
-        .post('http://localhost:3001/persons', newPerson)
+      servPerson.createPerson(newPerson)
         .then(response => {
-          setPersons(persons.concat(response.data))
+          setPersons(persons.concat(response))
           setNewName('')
           setNewNumber('')
         })
