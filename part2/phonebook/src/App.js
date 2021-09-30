@@ -5,7 +5,7 @@ import Search from './components/Search'
 import NewPerson from './components/NewPerson'
 
 const App = () => {
-  const [persons, setPersons] = useState([])
+  const [ persons, setPersons] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ filter, setFilter ] = useState('')
@@ -33,6 +33,15 @@ const App = () => {
     }
   }
 
+  const deletePerson = (id) =>{
+    const toDelete = persons.find(person => person.id === id)
+    if(window.confirm(`Delete ${toDelete.name}?`))
+      servPerson
+      .deletePerson(id)
+      .then(()=>{
+          setPersons(persons.filter((person)=> person.id !== id))
+      })
+  }
   const personToShow = filter === ''
     ? persons
     : persons.filter (person => person.name.toLowerCase().includes(filter.toLowerCase()))
@@ -52,7 +61,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Search  onChange={(event)=>setFilter(event.target.value)}  value={filter} /> 
       <NewPerson onSubmit={saveName} name={name} number={number} />      
-      <Persons personToShow={personToShow} />
+      <Persons personToShow={personToShow} deletePerson={deletePerson} />
     </div>
   )
 }
