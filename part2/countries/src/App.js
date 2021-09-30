@@ -17,11 +17,13 @@ function App() {
   ? countries
   : countries.filter (countries => countries.name.common.toLowerCase().includes(search.toLowerCase()))
 
+  const showDetail = (name) => setSearch(name)
+  
   return (
     <div>
         Find countries: <input valur={search} onChange={(event)=>setSearch(event.target.value)} />
         <br /> 
-          <CountryData countries={countriesToShow} />
+          <CountryData countries={countriesToShow} showDetail={showDetail} />
     </div>
 
 

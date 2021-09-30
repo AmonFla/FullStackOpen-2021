@@ -1,9 +1,9 @@
 import React from "react";
 
-const CountryItem = ({country}) => {
+const CountryItem = ({country, showDetail}) => {
     return(
         <>
-            {country.name.common} 
+            {country.name.common}  <button onClick={()=>showDetail(country.name.common)}>show</button>
             <br /> 
         </>
     )
