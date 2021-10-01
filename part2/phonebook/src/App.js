@@ -10,7 +10,11 @@ const App = () => {
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ filter, setFilter ] = useState('')
-  const [ notificationMessage, setNotificationMessage] = useState(null)
+  const [ notificationMessage, setNotificationMessage] = useState({
+      content : null,
+      className : ''
+    }
+  )
 
   useEffect(()=>{
     servPerson.getAll().then(persons => setPersons(persons))
@@ -37,7 +41,7 @@ const App = () => {
           setPersons(persons.concat(response))
           setNewName('')
           setNewNumber('')
-          setNotificationMessage(`Added ${response.name}`)
+          setNotificationMessage({ content: `Added ${response.name}`, className: 'success'})
         })
     }
   }
@@ -49,6 +53,12 @@ const App = () => {
       .deletePerson(id)
       .then(()=>{
           setPersons(persons.filter((person)=> person.id !== id))
+      })
+      .catch(error => {
+        if(error.response.status === 404){
+          setNotificationMessage({ content: `Information of  ${toDelete.name} has already been removed from server`, className: 'error'})
+          setPersons(persons.filter((person)=> person.id !== id))
+        }
       })
   }
   const personToShow = filter === ''

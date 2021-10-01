@@ -1,5 +1,11 @@
-.error {
+.success {
     color: green;
+}
+.error{
+    color: red;
+}
+
+.notificaction{
     background: lightgrey;
     font-size: 20px;
     border-style: solid;
