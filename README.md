@@ -5,6 +5,7 @@ Git de entregas de los ejercicios del curs
 
 ## Lecturas adicionales
 * Web Development Basics
+  * [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
   * [CSS Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
   * [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
   * [HTTP Tutorial](https://developer.mozilla.org/en-US/docs/Web/HTTP)
@@ -26,8 +27,7 @@ Git de entregas de los ejercicios del curs
   * [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
 * ScreenCast and Cources
-  * [ScreenCast and Courses](https://egghead.io/)
-
+  * [ScreenCast and Courses](https://egghead.io/) 
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
