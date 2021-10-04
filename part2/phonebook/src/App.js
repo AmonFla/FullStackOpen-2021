@@ -26,9 +26,12 @@ const App = () => {
     if(Object.entries(person).length !== 0){
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)){
          person.number = newNumber
-         servPerson.updatePerson(person.id, person).then(resp =>
-            setPersons(persons.map(data => data.id !== person.id?data:resp)) 
-         )
+         servPerson.updatePerson(person.id, person).then(resp =>{
+            setPersons(persons.map(data => data.id !== person.id?data:resp))
+            setNewName('')
+            setNewNumber('')
+            setNotificationMessage({ content: `Updated ${person.name}`, className: 'success'})
+          })
       }
     } else{
       const newPerson = {
