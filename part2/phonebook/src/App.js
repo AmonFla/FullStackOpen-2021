@@ -42,7 +42,7 @@ const App = () => {
           setNewName('')
           setNewNumber('')
           setNotificationMessage({ content: `Added ${response.name}`, className: 'success'})
-        })
+        }).catch(error => setNotificationMessage({ content: error.response.data.error, className: 'error'}))
     }
   }
 
