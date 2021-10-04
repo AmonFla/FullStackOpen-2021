@@ -1,0 +1,8 @@
+PUT http://127.0.0.1:3001/api/persons/615a461e2dd698043fe25fe9
+Content-Type: application/json
+
+{
+    "id" : "615a461e2dd698043fe25fe9",
+    "name": "Flavio Augusto Garrido",
+    "number": "12-34-11111"
+}

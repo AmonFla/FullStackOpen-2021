@@ -1,0 +1,6 @@
+POST http://127.0.0.1:3001/api/persons 
+Content-Type: application/json
+
+{ 
+    "number": "12-34-567897"
+}
