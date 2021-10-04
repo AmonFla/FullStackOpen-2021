@@ -31,7 +31,7 @@ const App = () => {
             setNewName('')
             setNewNumber('')
             setNotificationMessage({ content: `Updated ${person.name}`, className: 'success'})
-          })
+          }).catch(error => setNotificationMessage({ content: error.response.data.error, className: 'error'}))
       }
     } else{
       const newPerson = {
