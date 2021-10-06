@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title":"New Blog",
+    "author":"Flavio Garrido",
+    "url":"http://myblog.com/blog01",
+    "likes":0
+}
