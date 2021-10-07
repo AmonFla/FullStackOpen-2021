@@ -66,3 +66,25 @@ describe('Favorite Blog', () => {
     expect(listHelper.favoriteBlog(blogs)).toEqual(blogs[2])
   })
 })
+
+describe('Most Blog', () => {
+  test('most post', () => {
+    const blogs = [{
+      title: 'Hola Mundo',
+      author: 'El que escribio',
+      url: 'http://algun.lugar',
+      likes: 10
+    }, {
+      title: 'Hola Mundo',
+      author: 'Yo y que',
+      url: 'http://algun.lugar',
+      likes: 5
+    }, {
+      title: 'Hola Mundo',
+      author: 'El que escribio',
+      url: 'http://algun.lugar',
+      likes: 66
+    }]
+    expect(listHelper.mostBlog(blogs)).toEqual('El que escribio')
+  })
+})
