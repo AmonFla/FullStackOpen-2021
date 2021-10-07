@@ -31,6 +31,7 @@ const mostLiked = (blogs) => {
 
   return Object.keys(mostLiked).reduce((a, b) => mostLiked[a] > mostLiked[b] ? a : b)
 }
+
 module.exports = {
   dummy,
   totalLikes,
