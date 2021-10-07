@@ -16,13 +16,25 @@ const favoriteBlog = (blogs) => {
 }
 
 const mostBlog = (blogs) => {
-  const posrByAuthor = _.countBy(blogs, 'author')
-  return Object.keys(posrByAuthor).reduce((a, b) => posrByAuthor[a] > posrByAuthor[b] ? a : b)
+  const postByAuthor = _.countBy(blogs, 'author')
+  return Object.keys(postByAuthor).reduce((a, b) => postByAuthor[a] > postByAuthor[b] ? a : b)
 }
 
+const mostLiked = (blogs) => {
+  const reducer = (prev, blog) => {
+    _.has(prev, blog.author)
+      ? prev[blog.author] += blog.likes
+      : _.set(prev, [blog.author], blog.likes)
+    return prev
+  }
+  const mostLiked = blogs.reduce(reducer, {})
+
+  return Object.keys(mostLiked).reduce((a, b) => mostLiked[a] > mostLiked[b] ? a : b)
+}
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
-  mostBlog
+  mostBlog,
+  mostLiked
 }
