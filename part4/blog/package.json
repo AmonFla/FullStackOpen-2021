@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "lint": "eslint .",
     "dev": "nodemon index.js",
     "debug:all": "DEBUG=* nodemon index.js",
@@ -24,5 +24,8 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0"
+  },
+  "jest":{
+    "testEnvironment":"node"
   }
 }
