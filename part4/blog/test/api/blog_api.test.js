@@ -74,4 +74,19 @@ describe('TG-BLOG-03 POST Entry to Blog', () => {
     const titles = dataAfterPost.map(r => r.title)
     expect(titles).toContainEqual(post.title)
   })
+
+  test('TC-BLOG-03-03 Add new entry - Validate content', async () => {
+    const post = {
+      title: 'Test new entry',
+      author: 'Test Author',
+      url: 'http://test.url'
+    }
+
+    const afterPost = await api.post(h.baseRoute)
+      .send(post)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    expect(afterPost.body.likes).toBe(0)
+  })
 })
