@@ -13,7 +13,7 @@ beforeEach(async () => {
 
 afterAll(() => mongoose.connection.close())
 
-describe('TG-BLOG-01 GET All Post', () => {
+describe('TG-BLOG-01 GET All Blogs Post', () => {
   test('TC-BLOG-01-01 Content-Type is Json', async () => {
     await api.get(h.baseRoute)
       .expect(200)
@@ -23,5 +23,18 @@ describe('TG-BLOG-01 GET All Post', () => {
   test('TC-BLOG-01-02 Correct amount of blog', async () => {
     const blogs = await api.get(h.baseRoute)
     expect(blogs.body).toHaveLength(h.initData.length)
+  })
+})
+
+describe('TG-BLOG-02 Blog Format', () => {
+  test('TC-BLOG-02-01 Correct id property', async () => {
+    const blogs = await api.get(h.baseRoute)
+    expect(blogs.body[0].id).toBeDefined()
+  })
+
+  test('TC-BLOG-02-02 Correct _id & __v  deleted', async () => {
+    const blogs = await api.get(h.baseRoute)
+    expect(blogs.body[0]._id).not.toBeDefined()
+    expect(blogs.body[0].__v).not.toBeDefined()
   })
 })
