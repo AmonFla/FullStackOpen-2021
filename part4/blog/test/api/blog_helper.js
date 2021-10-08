@@ -24,8 +24,12 @@ const initData = [{
 }]
 
 const getAllPost = async () => {
-  const notes = await model.find({})
-  return notes.map(note => note.toJSON())
+  const blog = await model.find({})
+  return blog.map(blog => blog.toJSON())
 }
 
-module.exports = { baseRoute, initData, getAllPost }
+const getOne = async (id) => {
+  const blog = await model.findById(id)
+  return blog
+}
+module.exports = { baseRoute, initData, getAllPost, getOne }

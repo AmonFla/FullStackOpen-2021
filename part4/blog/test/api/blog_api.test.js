@@ -102,7 +102,7 @@ describe('TG-BLOG-03 POST Entry to Blog', () => {
   })
 })
 
-describe('TG-BLOG-04 Delete Entry', () => {
+describe('TG-BLOG-04 DELETE Entry', () => {
   test('TC-BLOG-04-01 Delete entry', async () => {
     const entries = await h.getAllPost()
 
@@ -111,5 +111,32 @@ describe('TG-BLOG-04 Delete Entry', () => {
 
     const afterDelete = await h.getAllPost()
     expect(afterDelete).toHaveLength(entries.length - 1)
+  })
+})
+
+describe('TG-BLOG-05 PUT Entry', () => {
+  test('TC-BLOG-05-01 Update entry', async () => {
+    const entries = await h.getAllPost()
+
+    entries[0].likes = entries[0].likes * 10
+    await api.put(`${h.baseRoute}/${entries[0].id}`)
+      .send(entries[0])
+      .expect(200)
+
+    const afterUpdate = await h.getOne(entries[0].id)
+    expect(afterUpdate.likes).toBe(entries[0].likes)
+  })
+})
+
+describe('TG-BLOG-06 PATCH Entry', () => {
+  test('TC-BLOG-06-01 Update entry', async () => {
+    const entries = await h.getAllPost()
+
+    await api.patch(`${h.baseRoute}/${entries[0].id}`)
+      .send({ likes: 200 })
+      .expect(200)
+
+    const afterUpdate = await h.getOne(entries[0].id)
+    expect(afterUpdate.likes).toBe(200)
   })
 })

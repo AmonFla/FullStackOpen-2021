@@ -1,0 +1,9 @@
+PUT http://localhost:3001/api/blogs/615e06d845610afd594d424c
+Content-Type: application/json
+
+{
+    "title":"New Blog",
+    "author":"Flavio Garrido",
+    "url":"http://myblog.com/blog01",
+    "likes":150
+}
