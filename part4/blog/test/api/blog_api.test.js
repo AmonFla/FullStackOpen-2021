@@ -75,7 +75,7 @@ describe('TG-BLOG-03 POST Entry to Blog', () => {
     expect(titles).toContainEqual(post.title)
   })
 
-  test('TC-BLOG-03-03 Add new entry - Validate content', async () => {
+  test('TC-BLOG-03-03 Add new entry - Validate likes default 0', async () => {
     const post = {
       title: 'Test new entry',
       author: 'Test Author',
@@ -88,5 +88,16 @@ describe('TG-BLOG-03 POST Entry to Blog', () => {
       .expect('Content-Type', /application\/json/)
 
     expect(afterPost.body.likes).toBe(0)
+  })
+
+  test('TC-BLOG-03-04 Add new entry - Validate not title and url', async () => {
+    const post = {
+      author: 'Test Author',
+      likes: 0
+    }
+
+    await api.post(h.baseRoute)
+      .send(post)
+      .expect(400)
   })
 })
