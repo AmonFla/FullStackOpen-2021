@@ -1,4 +1,6 @@
 const baseRoute = '/api/blogs'
+const model = require('../../models/blog')
+
 const initData = [{
   title: 'Hola Mundo',
   author: 'El que escribio',
@@ -21,4 +23,9 @@ const initData = [{
   likes: 7
 }]
 
-module.exports = { baseRoute, initData }
+const getAllPost = async () => {
+  const notes = await model.find({})
+  return notes.map(note => note.toJSON())
+}
+
+module.exports = { baseRoute, initData, getAllPost }

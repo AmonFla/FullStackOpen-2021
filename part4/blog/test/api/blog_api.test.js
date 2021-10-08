@@ -38,3 +38,40 @@ describe('TG-BLOG-02 Blog Format', () => {
     expect(blogs.body[0].__v).not.toBeDefined()
   })
 })
+
+describe('TG-BLOG-03 POST Entry to Blog', () => {
+  test('TC-BLOG-03-01 Add new entry - Validate amount of post', async () => {
+    const post = {
+      title: 'Test new entry',
+      author: 'Test Author',
+      url: 'http://test.url',
+      likes: 10
+    }
+
+    await api.post(h.baseRoute)
+      .send(post)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    const dataAfterPost = await h.getAllPost()
+    expect(dataAfterPost).toHaveLength(h.initData.length + 1)
+  })
+
+  test('TC-BLOG-03-02 Add new entry - Validate content', async () => {
+    const post = {
+      title: 'Test new entry',
+      author: 'Test Author',
+      url: 'http://test.url',
+      likes: 10
+    }
+
+    await api.post(h.baseRoute)
+      .send(post)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    const dataAfterPost = await h.getAllPost()
+    const titles = dataAfterPost.map(r => r.title)
+    expect(titles).toContainEqual(post.title)
+  })
+})
