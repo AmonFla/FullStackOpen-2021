@@ -101,3 +101,15 @@ describe('TG-BLOG-03 POST Entry to Blog', () => {
       .expect(400)
   })
 })
+
+describe('TG-BLOG-04 Delete Entry', () => {
+  test('TC-BLOG-04-01 Delete entry', async () => {
+    const entries = await h.getAllPost()
+
+    await api.delete(`${h.baseRoute}/${entries[0].id}`)
+      .expect(204)
+
+    const afterDelete = await h.getAllPost()
+    expect(afterDelete).toHaveLength(entries.length - 1)
+  })
+})
