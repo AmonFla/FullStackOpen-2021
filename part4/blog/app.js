@@ -1,4 +1,6 @@
 const express = require('express')
+const app = express()
+// require('express-async-errors')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
@@ -18,7 +20,6 @@ mongoose.connect(config.MONGODB_URI)
     logger.error('Connecting to mongo', error.message)
   })
 
-const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
