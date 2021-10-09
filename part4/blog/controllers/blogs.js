@@ -10,9 +10,10 @@ blogRouter.get('/', async (req, res, next) => {
 })
 
 blogRouter.post('/', async (req, resp, next) => {
-  const { body } = req
-  const decodedToken = jwt.verify(req.token, c.SECRET)
-  if (!req.token || !decodedToken.id) {
+  const { body, token } = req
+
+  const decodedToken = jwt.verify(token, c.SECRET)
+  if (!token || !decodedToken.id) {
     return resp.status(401).json({ error: 'token missing or invalid' })
   }
 
@@ -30,8 +31,20 @@ blogRouter.post('/', async (req, resp, next) => {
 })
 
 blogRouter.delete('/:id', async (req, resp, next) => {
-  await Blog.findByIdAndRemove(req.params.id)
-  resp.status(204).end()
+  const { token } = req
+
+  const decodedToken = jwt.verify(token, c.SECRET)
+  if (!token || !decodedToken.id) {
+    return resp.status(401).json({ error: 'token missing or invalid' })
+  }
+
+  const blog = await Blog.findById(req.params.id)
+  if (blog.user.toString() === decodedToken.id) {
+    blog.remove()
+    return resp.status(204).end()
+  } else {
+    return resp.status(401).json({ error: 'You are not allowed to delete' })
+  }
 })
 
 blogRouter.put('/:id', async (req, resp, next) => {
