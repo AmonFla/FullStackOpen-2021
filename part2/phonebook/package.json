@@ -13,6 +13,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "api": "npx json-server --port 3001 --watch db.json --routes routes.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
