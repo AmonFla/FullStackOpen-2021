@@ -1,5 +1,16 @@
+# @name login
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username":"root", 
+    "password":"123456" 
+}
+
+###
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
 
 {
     "title":"New Blog",
