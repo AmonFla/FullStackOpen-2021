@@ -1,5 +1,5 @@
 const baseRoute = '/api/blogs'
-const model = require('../../models/blog')
+const Model = require('../../models/blog')
 
 const initData = [{
   title: 'Hola Mundo',
@@ -23,13 +23,17 @@ const initData = [{
   likes: 7
 }]
 
+const initTest = async () => {
+  await Model.deleteMany({})
+  await Model.insertMany(initData)
+}
 const getAllPost = async () => {
-  const blog = await model.find({})
+  const blog = await Model.find({})
   return blog.map(blog => blog.toJSON())
 }
 
 const getOne = async (id) => {
-  const blog = await model.findById(id)
+  const blog = await Model.findById(id)
   return blog
 }
-module.exports = { baseRoute, initData, getAllPost, getOne }
+module.exports = { baseRoute, initData, initTest, getAllPost, getOne }

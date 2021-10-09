@@ -1,7 +1,9 @@
 
+const bcrypt = require('bcrypt')
+const Model = require('../../models/user')
+
 const baseRoute = '/api/users'
 const loginRoute = '/api/login'
-const model = require('../../models/user')
 
 const initData = [{
   username: 'root',
@@ -17,14 +19,22 @@ const initData = [{
   name: 'Publisher User'
 }]
 
+const initTest = async () => {
+  await Model.deleteMany({})
+  const userToAdd = initData.map(async (user) => {
+    const passwordHash = await bcrypt.hash(user.password, 10)
+    return new Model({ username: user.username, name: user.name, passwordHash: passwordHash }).save()
+  })
+  await Promise.all(userToAdd)
+}
 const getAll = async () => {
-  const data = await model.find({})
+  const data = await Model.find({})
   return data.map(data => data.toJSON())
 }
 
 const getOne = async (id) => {
-  const data = await model.findById(id)
+  const data = await Model.findById(id)
   return data
 }
 
-module.exports = { baseRoute, loginRoute, initData, getAll, getOne }
+module.exports = { baseRoute, loginRoute, initData, initTest, getAll, getOne }

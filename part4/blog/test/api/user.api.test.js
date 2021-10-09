@@ -1,32 +1,24 @@
 const supertest = require('supertest')
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const h = require('./user.helper')
+const uh = require('./user.helper')
 const app = require('../../app')
 const api = supertest(app)
 
-const User = require('../../models/user')
-
 beforeEach(async () => {
-  await User.deleteMany({})
-  const userToAdd = h.initData.map(async (user) => {
-    const passwordHash = await bcrypt.hash(user.password, 10)
-    return new User({ username: user.username, name: user.name, passwordHash: passwordHash }).save()
-  })
-  await Promise.all(userToAdd)
+  await uh.initTest()
 }, 10000)
 
 afterAll(() => mongoose.connection.close())
 
 describe('TG-USER-01 GET data', () => {
   test('TC-USER-01-01 - GET give correct content type', async () => {
-    await api.get(h.baseRoute)
+    await api.get(uh.baseRoute)
       .expect(200)
       .expect('Content-Type', /application\/json/)
   })
   test('TC-USER-01-02 - GET all users', async () => {
-    const allData = await api.get(h.baseRoute)
-    expect(allData.body).toHaveLength(h.initData.length)
+    const allData = await api.get(uh.baseRoute)
+    expect(allData.body).toHaveLength(uh.initData.length)
   })
 })
 
@@ -38,18 +30,18 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(201)
       .expect('Content-Type', /application\/json/)
 
-    const afterPost = await h.getAll()
-    expect(afterPost).toHaveLength(h.initData.length + 1)
+    const afterPost = await uh.getAll()
+    expect(afterPost).toHaveLength(uh.initData.length + 1)
   })
 
   test('TC-USER-02-02 - Username must be unique', async () => {
-    const users = h.initData
-    await api.post(h.baseRoute)
+    const users = uh.initData
+    await api.post(uh.baseRoute)
       .send(users[0])
       .expect(400)
   })
@@ -60,7 +52,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -71,7 +63,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -81,7 +73,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -93,7 +85,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -105,7 +97,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -117,7 +109,7 @@ describe('TG-USER-02 POST data', () => {
       name: 'New User'
     }
 
-    await api.post(h.baseRoute)
+    await api.post(uh.baseRoute)
       .send(user)
       .expect(400)
   })
@@ -126,10 +118,10 @@ describe('TG-USER-02 POST data', () => {
 describe('TG-USER-03 LOGIN', () => {
   test('TC-USER-03-01 - Login valid user', async () => {
     const user = {
-      username: h.initData[0].username,
-      password: h.initData[0].password
+      username: uh.initData[0].username,
+      password: uh.initData[0].password
     }
-    const data = await api.post(h.loginRoute)
+    const data = await api.post(uh.loginRoute)
       .send(user)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -143,7 +135,7 @@ describe('TG-USER-03 LOGIN', () => {
       password: '123456'
     }
 
-    await api.post(h.loginRoute)
+    await api.post(uh.loginRoute)
       .send(user)
       .expect(401)
   })
