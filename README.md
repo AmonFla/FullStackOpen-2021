@@ -31,18 +31,20 @@ Git de entregas de los ejercicios del curs
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
+	npm install -g json-server
 	npx json-server --port 3001 --watch db.json
+* [RESTful Client for VC](https://github.com/Huachao/vscode-restclient)
 
 ## Código Realizado
-* Part1 - Frontend realizado en reac
+* Part1 - Frontend realizado en ReactJs
   * anecdotes: Aplicación de valoración de citas, pudiendo navegarlas aleatoriamente y votarlas. Indicando la más votada
   * courseinfo: Aplicación simple para mostrar datos de un array y un acumulador
   * unicafe: Aplicación simple para dar feedback y calcular estádisticas
-* Part2
+* Part2 - Frontend realizado en ReactJs
   * countries: Aplicación que muestra un buscador de países, mostrando información del seleccionada y clima actual
   * courseinfo: Ampliación del courseinfo de Part1
   * phonebook: Aplicación de contactos teléfonicos. Se almacena el nombre y número de teléfono, luego se puede buscar y borrar. Usa una api RESTFull con json-server
-* Part3
+* Part3 - Bakcend con NodeJs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
-* Part4:
+* Part4:- Backend con NodeJs
   * blog: Api RESTful para tener un directorio de entradas de blogs. Usa JWT para el posteo y borrado de datos.
