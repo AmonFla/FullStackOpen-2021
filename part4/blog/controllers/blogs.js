@@ -11,7 +11,7 @@ blogRouter.post('/', async (req, resp, next) => {
   if (!body.title || !body.url) {
     return resp.status(400).end()
   }
-  const blog = new Blog(req.body)
+  const blog = new Blog(body)
   const result = await blog.save()
   resp.status(201).json(result)
 })

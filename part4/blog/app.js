@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-// require('express-async-errors')
+require('express-async-errors')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
@@ -9,6 +9,7 @@ const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
 
 const blogRouter = require('./controllers/blogs')
+const userRouter = require('./controllers/users')
 
 logger.info('Coneccting to mongo')
 
@@ -25,6 +26,7 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 app.use('/api/blogs', blogRouter)
+app.use('/api/users', userRouter)
 
 app.use(middleware.unknowEndpoint)
 app.use(middleware.errorHundler)
