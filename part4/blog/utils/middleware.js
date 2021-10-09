@@ -26,7 +26,7 @@ const errorHundler = (error, req, res, next) => {
   next(error)
 }
 
-const getTokenFrom = (req, resp, next) => {
+const getTokenFrom = (req, res, next) => {
   const authorization = req.get('authorization')
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     req.token = authorization.substring(7)
