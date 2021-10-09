@@ -1,5 +1,6 @@
 const supertest = require('supertest')
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 const h = require('./user.helper')
 const app = require('../../app')
 const api = supertest(app)
@@ -8,7 +9,11 @@ const User = require('../../models/user')
 
 beforeEach(async () => {
   await User.deleteMany({})
-  await User.insertMany(h.initData)
+  const userToAdd = h.initData.map(async (user) => {
+    const passwordHash = await bcrypt.hash(user.password, 10)
+    return new User({ username: user.username, name: user.name, passwordHash: passwordHash }).save()
+  })
+  await Promise.all(userToAdd)
 }, 10000)
 
 afterAll(() => mongoose.connection.close())
@@ -115,5 +120,31 @@ describe('TG-USER-02 POST data', () => {
     await api.post(h.baseRoute)
       .send(user)
       .expect(400)
+  })
+})
+
+describe('TG-USER-03 LOGIN', () => {
+  test('TC-USER-03-01 - Login valid user', async () => {
+    const user = {
+      username: h.initData[0].username,
+      password: h.initData[0].password
+    }
+    const data = await api.post(h.loginRoute)
+      .send(user)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    expect(data.body.token).toBeDefined()
+  }, 10000)
+
+  test('TC-USER-03-01 - Login invalid user', async () => {
+    const user = {
+      username: 'nouser',
+      password: '123456'
+    }
+
+    await api.post(h.loginRoute)
+      .send(user)
+      .expect(401)
   })
 })

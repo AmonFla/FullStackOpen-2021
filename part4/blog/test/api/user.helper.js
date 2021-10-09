@@ -1,4 +1,6 @@
+
 const baseRoute = '/api/users'
+const loginRoute = '/api/login'
 const model = require('../../models/user')
 
 const initData = [{
@@ -25,4 +27,4 @@ const getOne = async (id) => {
   return data
 }
 
-module.exports = { baseRoute, initData, getAll, getOne }
+module.exports = { baseRoute, loginRoute, initData, getAll, getOne }
