@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import servBlog from '../service/blogs'
+import servBlog from './service/blogs'
 
 const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
   const [title, setTitle] = useState('')

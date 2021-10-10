@@ -3,7 +3,7 @@ import './App.css'
 import BlogList from './components/BlogList'
 import Login from './components/Login'
 import Notification from './components/Notification'
-import NewBlog from './components/NewBlog'
+import NewBlog from './NewBlog'
 import servBlog from './service/blogs'
 import servLogin from './service/login'
 
