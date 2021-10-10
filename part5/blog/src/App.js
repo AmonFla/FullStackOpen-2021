@@ -3,6 +3,7 @@ import './App.css'
 import BlogList from './components/BlogList'
 import Login from './components/Login'
 import Notification from './components/Notification'
+import NewBlog from './components/NewBlog'
 import servBlog from './service/blogs'
 import servLogin from './service/login'
 
@@ -17,12 +18,13 @@ function App () {
   }
   )
 
-  const onSubmitHandle = async (event) => {
+  const onLoginHandle = async (event) => {
     event.preventDefault()
     try {
       const user = await servLogin.login(username, password)
       window.localStorage.setItem('user', JSON.stringify(user))
       setUser(user)
+      servBlog.setToken(user.token)
     } catch (exception) {
       setNotificationMessage({ content: 'Wrong Credentials', className: 'error' })
       setTimeout(() => { setNotificationMessage({ content: null, className: '' }) }, 5000)
@@ -56,10 +58,11 @@ function App () {
               password={password}
               setUsername={setUsername}
               setPassword={setPassword}
-              onSubmit={onSubmitHandle}/>
+              onSubmit={onLoginHandle}/>
           : (
           <>
             <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
+            <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
             <BlogList blogs={blogs} />
           </>
             )
