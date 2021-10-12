@@ -25,6 +25,7 @@ Git de entregas de los ejercicios del curs
   * [React Class Component Fundamentals (Legacy)](https://egghead.io/courses/react-with-class-components-fundamentals-4351f8bb)
   * [React Docs](https://reactjs.org/docs/getting-started.html)
   * [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+  * [Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
 * ScreenCast and Cources
   * [ScreenCast and Courses](https://egghead.io/) 

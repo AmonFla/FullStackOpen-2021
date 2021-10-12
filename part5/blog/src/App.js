@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+
 import BlogList from './components/BlogList'
 import Login from './components/Login'
 import Notification from './components/Notification'
-import NewBlog from './NewBlog'
+import NewBlog from './components/NewBlog'
+import Toggleable from './components/Togglable'
+
 import servBlog from './service/blogs'
 import servLogin from './service/login'
 
@@ -62,7 +65,9 @@ function App () {
           : (
           <>
             <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
-            <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
+            <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
+              <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
+            </Toggleable>
             <BlogList blogs={blogs} />
           </>
             )

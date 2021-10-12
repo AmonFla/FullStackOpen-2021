@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import servBlog from './service/blogs'
+import servBlog from '../service/blogs'
 
 const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
   const [title, setTitle] = useState('')
@@ -15,10 +15,11 @@ const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
     const newBlog = await servBlog.create(blog)
     setBlogs(blogs.concat(newBlog))
     setNotificationMessage({ content: `A new Blog ${title} by ${author} added`, className: 'success' })
+    setTimeout(() => { setNotificationMessage({ content: null, className: '' }) }, 5000)
   }
 
   return (
-    <div>
+    <>
         <h3>Create new blog</h3>
         <form onSubmit={onSubmit}>
             <div>
@@ -34,8 +35,7 @@ const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
                 <button type="submit">Create</button>
             </div>
         </form>
-        <br />
-    </div>
+    </>
   )
 }
 export default NewBlog
