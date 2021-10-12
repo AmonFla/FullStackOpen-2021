@@ -68,7 +68,7 @@ function App () {
             <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
               <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
             </Toggleable><br /><br />
-            <BlogList blogs={blogs} />
+            <BlogList blogs={blogs} setBlogs={setBlogs}/>
           </>
             )
         }
