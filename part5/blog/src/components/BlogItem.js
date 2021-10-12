@@ -1,9 +1,9 @@
 import React from 'react'
 
 const BlogItem = ({ blog }) => (
-    <div>
-        {blog.title} - {blog.author}
-    </div>
+    <>
+        {blog.title} &nbsp;
+    </>
 )
 
 export default BlogItem

@@ -67,7 +67,7 @@ function App () {
             <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
             <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
               <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
-            </Toggleable>
+            </Toggleable><br /><br />
             <BlogList blogs={blogs} />
           </>
             )
