@@ -1,5 +1,6 @@
 import React from 'react'
 import servBlog from '../service/blogs'
+import PropTypes from 'prop-types'
 
 const BlogDetail = ({ blog, blogs, setBlogs }) => {
   const likes = async () => {
@@ -25,12 +26,17 @@ const BlogDetail = ({ blog, blogs, setBlogs }) => {
   return (
 
     <>
-        {blog.url} <br />
-        {blog.likes} <button onClick={() => likes()}>like</button><br />
-        {blog.author} <br />
-        {JSON.parse(window.localStorage.getItem('user')).username === blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
+      {blog.url} <br />
+      {blog.likes} <button onClick={() => likes()}>like</button><br />
+      {blog.author} <br />
+      {JSON.parse(window.localStorage.getItem('user')).username === blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
     </>
   )
 }
 
+BlogDetail.propTypes = {
+  blog: PropTypes.object.isRequired,
+  blogs: PropTypes.array.isRequired,
+  setBlogs: PropTypes.func.isRequired
+}
 export default BlogDetail

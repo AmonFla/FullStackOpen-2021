@@ -57,20 +57,20 @@ function App () {
         <Notification message={notificationMessage} />
         { user === null
           ? <Login
-              username={username}
-              password={password}
-              setUsername={setUsername}
-              setPassword={setPassword}
-              onSubmit={onLoginHandle}/>
+            username={username}
+            password={password}
+            setUsername={setUsername}
+            setPassword={setPassword}
+            onSubmit={onLoginHandle}/>
           : (
-          <>
-            <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
-            <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
-              <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
-            </Toggleable><br /><br />
-            <BlogList blogs={blogs} setBlogs={setBlogs}/>
-          </>
-            )
+            <>
+              <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
+              <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
+                <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
+              </Toggleable><br /><br />
+              <BlogList blogs={blogs} setBlogs={setBlogs}/>
+            </>
+          )
         }
       </div>
     </div>

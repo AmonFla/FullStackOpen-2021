@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import servBlog from '../service/blogs'
+import PropTypes from 'prop-types'
 
 const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
   const [title, setTitle] = useState('')
@@ -20,22 +21,28 @@ const NewBlog = ({ blogs, setBlogs, setNotificationMessage }) => {
 
   return (
     <>
-        <h3>Create new blog</h3>
-        <form onSubmit={onSubmit}>
-            <div>
+      <h3>Create new blog</h3>
+      <form onSubmit={onSubmit}>
+        <div>
                 Title : <input type="text" value={title} name="Title" onChange={({ target }) => setTitle(target.value)} />
-            </div>
-            <div>
+        </div>
+        <div>
                 Author: <input type="text" value={author} name="Author" onChange={({ target }) => setAuthor(target.value)} />
-            </div>
-            <div>
+        </div>
+        <div>
                 Url: <input type="text" value={url} name="Url" onChange={({ target }) => setUrl(target.value)} />
-            </div>
-            <div>
-                <button type="submit">Create</button>
-            </div>
-        </form>
+        </div>
+        <div>
+          <button type="submit">Create</button>
+        </div>
+      </form>
     </>
   )
+}
+
+NewBlog.propTypes = {
+  blogs: PropTypes.array.isRequired,
+  setBlogs: PropTypes.func.isRequired,
+  setNotificationMessage: PropTypes.func.isRequired
 }
 export default NewBlog
