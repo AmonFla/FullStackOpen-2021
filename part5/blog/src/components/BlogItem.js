@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BlogItem = ({ blog }) => (
-  <>
-    {blog.title} &nbsp;
-  </>
+  <span className="testBlogItem">
+    {blog.title} - {blog.author} &nbsp;
+  </span>
 )
 
 BlogItem.propTypes = {

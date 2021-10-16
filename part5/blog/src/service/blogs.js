@@ -24,8 +24,12 @@ const update = async blog => {
   const config = {
     headers: { Authorization: token }
   }
-  const response = await axios.put(`${baseUrl}/${blog.id}`, blog, config)
-  return response.data
+  try{
+    const response = await axios.put(`${baseUrl}/${blog.id}`, blog, config)
+    return response.data
+  }catch(event){
+    return null
+  }
 }
 
 const remove = async blog => {

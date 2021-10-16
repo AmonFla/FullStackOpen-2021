@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 
-import BlogList from './components/BlogList'
 import Login from './components/Login'
 import Notification from './components/Notification'
-import NewBlog from './components/NewBlog'
-import Toggleable from './components/Togglable'
-
-import servBlog from './service/blogs'
+import BlogMain from './components/BlogMain'
 import servLogin from './service/login'
 
 function App () {
-  const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
@@ -25,9 +20,8 @@ function App () {
     event.preventDefault()
     try {
       const user = await servLogin.login(username, password)
-      window.localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('user', JSON.stringify(user))
       setUser(user)
-      servBlog.setToken(user.token)
     } catch (exception) {
       setNotificationMessage({ content: 'Wrong Credentials', className: 'error' })
       setTimeout(() => { setNotificationMessage({ content: null, className: '' }) }, 5000)
@@ -35,16 +29,13 @@ function App () {
   }
 
   const logoutHandle = () => {
-    window.localStorage.removeItem('user')
+    localStorage.removeItem('user')
     setUser(null)
   }
 
-  useEffect(() => {
-    servBlog.getAll().then(blogs => setBlogs(blogs))
-  }, [])
 
   useEffect(() => {
-    const loggedUser = window.localStorage.getItem('user')
+    const loggedUser = localStorage.getItem('user')
     if (loggedUser) { setUser(JSON.parse(loggedUser)) }
   }, [])
 
@@ -65,10 +56,7 @@ function App () {
           : (
             <>
               <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
-              <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' >
-                <NewBlog blogs={blogs} setBlogs={setBlogs} setNotificationMessage={setNotificationMessage}/>
-              </Toggleable><br /><br />
-              <BlogList blogs={blogs} setBlogs={setBlogs}/>
+              <BlogMain setNotificationMessage={setNotificationMessage} />
             </>
           )
         }

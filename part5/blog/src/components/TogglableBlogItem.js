@@ -7,23 +7,24 @@ const TogglableBlogItem = (props) => {
   const hideWhenVisible = { display: visible ? 'none' : '' }
   const showWhenVisible = { display: visible ? '' : 'none' }
 
-  const toggleVisibility = () => {
+  const TogglableBlogItemVisibility = () => {
     setVisible(!visible)
   }
 
   return (
     <>
       <span style={hideWhenVisible}>
-        <button onClick={toggleVisibility}>{props.buttonShow}</button>
+        <button onClick={TogglableBlogItemVisibility}>{props.buttonShow}</button>
       </span>
       <span style={showWhenVisible}>
-        <button onClick={toggleVisibility}>{props.buttonHide}</button><br />
+        <button onClick={TogglableBlogItemVisibility}>{props.buttonHide}</button><br />
         {props.children}
 
       </span>
     </>
   )
 }
+
 
 TogglableBlogItem.propTypes ={
   buttonShow: PropTypes.string.isRequired,

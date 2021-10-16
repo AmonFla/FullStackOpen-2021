@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useImperativeHandle  } from 'react'
 import PropTypes from 'prop-types'
 
-const Toggleable = (props) => {
+const Toggleable = React.forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false)
 
   const hideWhenVisible = { display: visible ? 'none' : '' }
@@ -11,6 +11,11 @@ const Toggleable = (props) => {
     setVisible(!visible)
   }
 
+  useImperativeHandle(ref, () => {
+    return {
+      toggleVisibility
+    }
+  })
   return (
     <>
       <span style={hideWhenVisible}>
@@ -22,7 +27,9 @@ const Toggleable = (props) => {
       </div>
     </>
   )
-}
+})
+Toggleable.displayName = 'TogglableBlogItem'
+
 
 Toggleable.propTypes ={
   buttonShow: PropTypes.string.isRequired,
