@@ -27,8 +27,12 @@ Git de entregas de los ejercicios del curs
   * [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
   * [Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
+  * [Testing-Library] (https://testing-library.com/docs/)
 * ScreenCast and Cources
   * [ScreenCast and Courses](https://egghead.io/) 
+* Testing
+  * [Cypress E2E Testing](https://docs.cypress.io/guides/overview/why-cypress#In-a-nutshell)
+  * [Jest](https://jestjs.io/)
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
