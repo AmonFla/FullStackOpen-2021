@@ -24,9 +24,9 @@ describe('<BlogNew /> ... testing', () => {
 
   test('post new entry', () => {
 
-    const title = component.container.querySelector('#Title')
-    const author = component.container.querySelector('#Author')
-    const url = component.container.querySelector('#Url')
+    const title = component.container.querySelector('#inputTitle')
+    const author = component.container.querySelector('#inputAuthor')
+    const url = component.container.querySelector('#inputUrl')
     const form = component.container.querySelector('form')
 
     fireEvent.change(title, { target:{ value:'test title entry' } })

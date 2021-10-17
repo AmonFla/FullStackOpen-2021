@@ -9,7 +9,8 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "debug:all": "cross-env NODE_ENV=development DEBUG=* nodemon index.js",
     "debug:express": "cross-env NODE_ENV=development DEBUG=express:* nodemon index.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:test": "cross-env NODE_ENV=test node index.js"
   },
   "author": "",
   "license": "ISC",

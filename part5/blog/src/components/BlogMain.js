@@ -45,7 +45,9 @@ const BlogMain = ({ setNotificationMessage }) => {
       </Toggleable>
       <br />
       <br />
-      <BlogList blogs={blogs} updateBlog={updateBlog} deleteBlog={deletedBlog}/>
+      <div className="testBlogList">
+        <BlogList blogs={blogs} updateBlog={updateBlog} deleteBlog={deletedBlog}/>
+      </div>
     </>
   )
 }

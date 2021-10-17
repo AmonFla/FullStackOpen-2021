@@ -6,13 +6,13 @@ const Login = (props) => (
   <>
     <form onSubmit={props.onSubmit}>
       <div>
-                User: <input type="text" value={props.username} name="User" onChange={({ target }) => props.setUsername(target.value)} />
+                User: <input type="text" value={props.username} id="inputUser" onChange={({ target }) => props.setUsername(target.value)} />
       </div>
       <div>
-                Passowrd: <input type="password" value={props.password} name="User" onChange={({ target }) => props.setPassword(target.value)} />
+                Password: <input type="password" value={props.password} id="inputPassword" onChange={({ target }) => props.setPassword(target.value)} />
       </div>
       <div>
-        <button type="submit">Login</button>
+        <button type="submit" id="buttonLogin">Login</button>
       </div>
     </form>
   </>

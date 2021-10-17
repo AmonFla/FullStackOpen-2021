@@ -16,9 +16,8 @@ const BlogDetail = ({ blog, updateBlog, deleteBlog }) => {
   return (
 
     <span className="testBlogDetail">
-      {}
       <span className="testBlogDetailUrl">{blog.url}</span><br />
-      <span className="testBlogDetailLikes">{blog.likes}</span><button onClick={() => likes()}>like</button><br />
+      <span className="testBlogDetailLikes">{blog.likes}</span><button onClick={() => likes()} id="buttonLike" >like</button><br />
       {blog.user.name} <br />
       {JSON.parse(localStorage.getItem('user')).username === blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
     </span>
