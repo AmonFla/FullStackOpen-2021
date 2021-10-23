@@ -75,7 +75,7 @@ describe('Blog app', function() {
         cy.get('@detail').contains('remove').should('not.exist')
       })
 
-      it.only('A blog can\'t be deleted by other user', function(){
+      it('A blog can\'t be deleted by other user', function(){
         cy.contains('Entrada 1').parent().as('detailBlog1')
         cy.get('@detailBlog1').contains('view').click()
         cy.get('@detailBlog1').contains('like').as('buttonLike1')

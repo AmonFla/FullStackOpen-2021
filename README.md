@@ -33,6 +33,8 @@ Git de entregas de los ejercicios del curs
 * Testing
   * [Cypress E2E Testing](https://docs.cypress.io/guides/overview/why-cypress#In-a-nutshell)
   * [Jest](https://jestjs.io/)
+* Redux
+  * [Fundamentals](https://redux.js.org/tutorials/fundamentals/part-1-overview) 
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
@@ -53,3 +55,6 @@ Git de entregas de los ejercicios del curs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
 * Part4:- Backend con NodeJs
   * blog: Api RESTful para tener un directorio de entradas de blogs. Usa JWT para el posteo y borrado de datos.
+* Part5:- Front con React
+  * blog: Front end de la Parte4 con testing unitario y end-to-end.
+
