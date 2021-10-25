@@ -8,7 +8,7 @@ const AnecdoteForm = (props)=>{
     const NewAnecdote = async (e) => {
         e.preventDefault() 
         props.newAnecdote(e.target.anecdote.value)
-        props.setNotificacion(`Added anecdote '${e.target.anecdote.value}'`,5000)
+        props.setNotificacion(`Added anecdote '${e.target.anecdote.value}'`,5)
         e.target.anecdote.value = ''
 
     }

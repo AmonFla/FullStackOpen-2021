@@ -11,15 +11,17 @@ const notificationReducer = (state=null, action)=>{
 
 export const setNotificacion = (notification, time)=>{
     return async dispatch =>{
+        clearTimeout(localStorage.getItem('timeId'))
+        const timeId = setTimeout(() => { 
+            dispatch({
+                type: 'CLEAN-NOTIFICATION'
+            })
+         }, time * 1000)
         dispatch({
             type: 'SET-NOTIFICATION',
             data: notification
         })
-        setTimeout(() => { 
-            dispatch({
-                type: 'CLEAN-NOTIFICATION'
-            })
-         }, time)
+        localStorage.setItem('timeId',timeId ) 
     }    
 }
 

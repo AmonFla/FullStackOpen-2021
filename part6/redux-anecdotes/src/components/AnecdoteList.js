@@ -1,26 +1,22 @@
 import React from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { connect } from "react-redux"
 import { voteAnecdote } from "../reducers/anecdoteReducer"
 import { setNotificacion } from "../reducers/notificationReducer" 
 
-const AnecdoteList = ()=>{
-  const state = useSelector(state => state)
-  const anecdotes = state.anecdotes
-    .filter(a => a.content.includes(state.filter))
-    .sort((a, b) => a.votes < b.votes ? 1 : -1)
-
-  const dispatch = useDispatch()
+const AnecdoteList = (props)=>{  
+    
+    
 
   const vote = async (id) => {
-    const anecdote = anecdotes.find(a => a.id === id) 
+    const anecdote = props.anecdotes.find(a => a.id === id) 
     const modifiedEntry = {...anecdote, votes: anecdote.votes + 1}
-    dispatch(voteAnecdote(modifiedEntry))
-    dispatch(setNotificacion(`you voted '${anecdote.content}'`,5000)) 
+    props.voteAnecdote(modifiedEntry)
+    props.setNotificacion(`you voted '${anecdote.content}'`,5)
   }
 
   return(
       <>
-        {anecdotes.map(anecdote =>
+        {props.anecdotes.map(anecdote =>
             <div key={anecdote.id}>
             <div>
                 {anecdote.content}
@@ -35,4 +31,11 @@ const AnecdoteList = ()=>{
   )
 }
 
-export default AnecdoteList
+const mapStateToProps = (state)=>{
+  return {
+    anecdotes: state.anecdotes
+      .filter(a => a.content.includes(state.filter))
+      .sort((a, b) => a.votes < b.votes ? 1 : -1)
+  }
+}
+export default connect(mapStateToProps, {voteAnecdote,setNotificacion})(AnecdoteList)
