@@ -8,9 +8,8 @@ const AnecdoteForm = ()=>{
     const dispatch = useDispatch()
 
     const NewAnecdote = async (e) => {
-        e.preventDefault()
-        const newEntry = await servAnecdotes.save(e.target.anecdote.value)
-        dispatch(newAnecdote(newEntry))
+        e.preventDefault() 
+        dispatch(newAnecdote(e.target.anecdote.value))
         dispatch(setNotificacion(`Added anecdote '${e.target.anecdote.value}'`))
         setTimeout(() => { dispatch(cleanNotificacion()) }, 5000)
         e.target.anecdote.value = ''

@@ -3,14 +3,12 @@
     {
       "id": 1,
       "content": "'If it hurts, do it more often",
-      "votes": 2,
-      "vote": null
+      "votes": 2
     },
     {
       "id": 2,
       "content": "Adding manpower to a late software project makes it later!",
-      "votes": 4,
-      "vote": null
+      "votes": 4
     },
     {
       "id": 3,
@@ -31,6 +29,16 @@
       "content": "1234",
       "votes": 0,
       "id": 6
+    },
+    {
+      "content": "2312",
+      "votes": 0,
+      "id": 7
+    },
+    {
+      "content": "test dispatch",
+      "votes": 0,
+      "id": 8
     }
   ]
 }

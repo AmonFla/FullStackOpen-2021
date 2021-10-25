@@ -21,9 +21,12 @@ export const voteAnecdote = (data) =>{
 }
 
 export const newAnecdote = (data) =>{
-  return {
-    type: 'ANECDOTE-ADD',
-    data
+  return async dispatch => {
+    const newEntry = await servAnecdote.save(data)
+    dispatch({
+      type: 'ANECDOTE-ADD',
+      data: newEntry
+    })
   }
 }
 
