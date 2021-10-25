@@ -11,9 +11,8 @@ const App = () => {
   const dispatch = useDispatch()
   
   useEffect(()=>{
-    servAnecdotes.getAll().then(data => dispatch(initAnecdote(data)))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    dispatch(initAnecdote())
+  },[dispatch])
 
   return (
     <div>

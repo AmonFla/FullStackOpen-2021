@@ -1,3 +1,4 @@
+ import servAnecdote from '../services/anecdotes'
 
 const reducer = (state = [], action) => { 
   switch(action.type){
@@ -26,10 +27,15 @@ export const newAnecdote = (data) =>{
   }
 }
 
-export const initAnecdote = (data) =>{
-  return {
-    type: 'ANECDOTE-INIT',
-    data
+export const initAnecdote = () =>{
+  return async dispatch =>{
+    const data = await servAnecdote.getAll()
+    dispatch({
+      type: 'ANECDOTE-INIT',
+      data
+
+    })
   }
 }
+
 export default reducer
