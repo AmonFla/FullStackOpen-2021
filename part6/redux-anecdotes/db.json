@@ -18,7 +18,7 @@
     {
       "id": 4,
       "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-      "votes": 0
+      "votes": 2
     },
     {
       "content": "new anecdote",
@@ -39,6 +39,11 @@
       "content": "test dispatch",
       "votes": 2,
       "id": 8
+    },
+    {
+      "content": "qwerty",
+      "votes": 0,
+      "id": 9
     }
   ]
 }
