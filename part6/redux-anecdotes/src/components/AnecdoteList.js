@@ -15,9 +15,7 @@ const AnecdoteList = ()=>{
   const vote = async (id) => {
     const anecdote = anecdotes.find(a => a.id === id) 
     const modifiedEntry = {...anecdote, votes: anecdote.votes + 1}
-    await servAnecdote.update(modifiedEntry)
     dispatch(voteAnecdote(modifiedEntry))
-    
     dispatch(setNotificacion(`you voted '${anecdote.content}'`))
     setTimeout(() => { dispatch(cleanNotificacion()) }, 5000)
   }

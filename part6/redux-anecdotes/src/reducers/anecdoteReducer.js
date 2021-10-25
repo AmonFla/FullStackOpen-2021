@@ -14,11 +14,14 @@ const reducer = (state = [], action) => {
 }
 
 export const voteAnecdote = (data) =>{
-  return {
-    type: 'ANECDOTE-VOTE',
-    data
+  return async dispatch => {
+    const modifiedEntry = await servAnecdote.update(data)
+    dispatch({
+      type: 'ANECDOTE-VOTE',
+      data: modifiedEntry
+    })
   }
-}
+} 
 
 export const newAnecdote = (data) =>{
   return async dispatch => {
