@@ -28,6 +28,7 @@ Git de entregas de los ejercicios del curs
   * [Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
   * [Testing-Library] (https://testing-library.com/docs/)
+  * [Uncontroller Form] (https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
 * ScreenCast and Cources
   * [ScreenCast and Courses](https://egghead.io/) 
 * Testing
@@ -35,6 +36,8 @@ Git de entregas de los ejercicios del curs
   * [Jest](https://jestjs.io/)
 * Redux
   * [Fundamentals](https://redux.js.org/tutorials/fundamentals/part-1-overview) 
+  * [Fundamentals of Redux Course from Dan Abramov](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867) 
+  * [You Might Not Need Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
@@ -53,8 +56,12 @@ Git de entregas de los ejercicios del curs
   * phonebook: Aplicación de contactos teléfonicos. Se almacena el nombre y número de teléfono, luego se puede buscar y borrar. Usa una api RESTFull con json-server
 * Part3 - Bakcend con NodeJs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
-* Part4:- Backend con NodeJs
+* Part4 - Backend con NodeJs
   * blog: Api RESTful para tener un directorio de entradas de blogs. Usa JWT para el posteo y borrado de datos.
-* Part5:- Front con React
+* Part5 - Front con React
   * blog: Front end de la Parte4 con testing unitario y end-to-end.
+* Part6 - FronEnd with redux
+  * redux-anecdotes: Aplicación de valoración de citas agregando, filtrando y votalas usando redux y axios. 
+  * unicafe: Aplicación simple para dar feedback con redux
+  
 
