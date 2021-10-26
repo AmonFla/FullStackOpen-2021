@@ -27,22 +27,44 @@ Git de entregas de los ejercicios del curs
   * [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
   * [Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
-  * [Testing-Library] (https://testing-library.com/docs/)
-  * [Uncontroller Form] (https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
+  * [Testing-Library](https://testing-library.com/docs/)
+  * [Uncontroller Form](https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
+  * [ContextApi](https://reactjs.org/docs/context.html)
+  * [How To useContext With useReducer](https://hswolff.com/blog/how-to-usecontext-with-usereducer/)
+  * [SEO vs REACT](https://www.freecodecamp.org/news/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9/)
+  * [Mejores practicas](https://reactpatterns.com/)
+  * Redux
+	* [Fundamentals](https://redux.js.org/tutorials/fundamentals/part-1-overview) 
+	* [Fundamentals of Redux Course from Dan Abramov](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867) 
+	* [You Might Not Need Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
+	* [Will Google find your React content?](https://www.javascriptstuff.com/react-seo/)
   * Hooks
 	* [Awesome React Hooks Resources](https://github.com/rehooks/awesome-react-hooks)
     * [Easy to understand React Hook recipes by Gabe Ragland](https://usehooks.com/)
     * [Why Do React Hooks Rely on Call Order?](https://overreacted.io/why-do-hooks-rely-on-call-order/)
-
 * ScreenCast and Cources
   * [ScreenCast and Courses](https://egghead.io/) 
 * Testing
   * [Cypress E2E Testing](https://docs.cypress.io/guides/overview/why-cypress#In-a-nutshell)
   * [Jest](https://jestjs.io/)
-* Redux
-  * [Fundamentals](https://redux.js.org/tutorials/fundamentals/part-1-overview) 
-  * [Fundamentals of Redux Course from Dan Abramov](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867) 
-  * [You Might Not Need Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
+* Otros
+  * [Seguridad](https://cybersecuritybase.mooc.fi/module-2.1)
+  * [Top 10 fallas de seguridad](https://owasp.org/www-project-top-ten/)
+  * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
+  * [Microservices](https://martinfowler.com/articles/microservices.html)
+  * [Do more with less.‍Serverless](https://www.serverless.com/)
+  * [reactiflux - Discord Group](https://www.reactiflux.com/)
+* Bibliotecas
+  * [Lodash - funciones para la manipulación de datos complejos](https://www.npmjs.com/package/lodash)
+  * [Ramda - funcional like programming](https://ramdajs.com/)
+  * [date-fns - manipulación de fechas](https://github.com/date-fns/date-fns)
+  * [Formix - Manipulación de formularios](https://www.npmjs.com/package/formik)
+  * [reduc-form - Manipulación de formularios](https://redux-form.com/8.3.0/)
+  * [rechats - Gráficos](http://recharts.org/en-US/)
+  * [highcharts](https://github.com/highcharts/highcharts-react)
+  * [inmutable - deja objetos inmutables](https://github.com/facebook/immutable-js/)
+  * [immer - deja objetos inmutables ](https://github.com/mweststrate/immer)
+  * [Google Analytics](https://github.com/react-ga/react-ga)
 ## Herramientas
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
