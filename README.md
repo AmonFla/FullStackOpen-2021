@@ -29,6 +29,11 @@ Git de entregas de los ejercicios del curs
   * [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react)
   * [Testing-Library] (https://testing-library.com/docs/)
   * [Uncontroller Form] (https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
+  * Hooks
+	* [Awesome React Hooks Resources](https://github.com/rehooks/awesome-react-hooks)
+    * [Easy to understand React Hook recipes by Gabe Ragland](https://usehooks.com/)
+    * [Why Do React Hooks Rely on Call Order?](https://overreacted.io/why-do-hooks-rely-on-call-order/)
+
 * ScreenCast and Cources
   * [ScreenCast and Courses](https://egghead.io/) 
 * Testing
@@ -58,10 +63,14 @@ Git de entregas de los ejercicios del curs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
 * Part4 - Backend con NodeJs
   * blog: Api RESTful para tener un directorio de entradas de blogs. Usa JWT para el posteo y borrado de datos.
-* Part5 - Front con React
-  * blog: Front end de la Parte4 con testing unitario y end-to-end.
-* Part6 - FronEnd with redux
+* Part5 - Frontend con React
+  * blog: Frontend de la Parte4 con testing unitario y end-to-end.
+* Part6 - Fronend with redux
   * redux-anecdotes: Aplicación de valoración de citas agregando, filtrando y votalas usando redux y axios. 
   * unicafe: Aplicación simple para dar feedback con redux
+* Part7 - React: Routes, Hooks
+  * country-hook: utilización de hook personalizados, dentro del cual se comunica con axios
+  * routed-anecdotes: implementación de navegación por rutas
+  * ultimate-hooks: creación de un hook personalizado para la comunicación con dos RestApi
   
 

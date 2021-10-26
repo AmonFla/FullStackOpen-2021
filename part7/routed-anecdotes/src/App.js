@@ -61,7 +61,6 @@ const CreateNew = (props) => {
 
   const onReset = (e) =>{ 
     e.preventDefault()
-
     content.reset()
     author.reset()
     info.reset()
