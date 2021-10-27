@@ -12,7 +12,7 @@ const BlogNew = (props) => {
   const onSubmit = async (event) => {
     event.preventDefault()
     const blog = { title, author, url }
-    props.newBlog(blog)
+    props.newBlog(blog,props.user.token)
     props.setNotification({ content: `A new Blog ${blog.title} by ${blog.author} added`, className: 'success' }, 5)
     setAuthor('')
     setTitle('')
@@ -42,4 +42,9 @@ const BlogNew = (props) => {
 }
 
 
-export default connect(null, { setNotification,  newBlog })(BlogNew)
+const mapStateToProps = (state) => {
+  return{
+    user: state.user
+  }
+}
+export default connect(mapStateToProps,  { setNotification,  newBlog })(BlogNew)

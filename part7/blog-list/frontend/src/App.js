@@ -6,12 +6,12 @@ import Notification from './components/Notification'
 import BlogMain from './components/BlogMain'
 import servLogin from './service/login'
 import { setNotification } from './reducer/NotificactionReducer'
+import { setUser, cleanUser } from './reducer/UserReducer'
 import { connect } from 'react-redux'
 
 function App (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState(null)
 
 
   const onLoginHandle = async (event) => {
@@ -19,7 +19,7 @@ function App (props) {
     try {
       const user = await servLogin.login(username, password)
       localStorage.setItem('user', JSON.stringify(user))
-      setUser(user)
+      props.setUser(user)
     } catch (exception) {
       props.setNotification({ content: 'Wrong Credentials', className: 'error' },5)
     }
@@ -27,13 +27,13 @@ function App (props) {
 
   const logoutHandle = () => {
     localStorage.removeItem('user')
-    setUser(null)
+    props.cleanUser(null)
   }
 
 
   useEffect(() => {
     const loggedUser = localStorage.getItem('user')
-    if (loggedUser) { setUser(JSON.parse(loggedUser)) }
+    if (loggedUser) { props.setUser(JSON.parse(loggedUser)) }
   }, [])
 
   return (
@@ -43,7 +43,7 @@ function App (props) {
       </header>
       <div className="App-body">
         <Notification />
-        { user === null
+        { props.user === null
           ? <Login
             username={username}
             password={password}
@@ -52,7 +52,7 @@ function App (props) {
             onSubmit={onLoginHandle}/>
           : (
             <>
-              <p> Loged user: {user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
+              <p> Loged user: {props.user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
               <BlogMain />
             </>
           )
@@ -62,4 +62,10 @@ function App (props) {
   )
 }
 
-export default connect(null, { setNotification })(App)
+const stateToPropsMap = (state) => {
+  return{
+    user: state.user
+  }
+}
+
+export default connect(stateToPropsMap, { setNotification,setUser, cleanUser })(App)

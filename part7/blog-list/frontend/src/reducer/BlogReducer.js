@@ -1,7 +1,6 @@
 import servBlog from '../service/blogs'
 
-const NotificationReducer = (state = [], action) => {
-  setUserToken()
+const BlogReducer = (state = [], action) => {
   switch(action.type){
   case 'BLOG-INIT':
     return action.data
@@ -16,13 +15,12 @@ const NotificationReducer = (state = [], action) => {
   }
 }
 
-const setUserToken = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
-  servBlog.setToken(user.token)
-}
-export const newBlog = (data) => {
+
+export const newBlog = (data,token) => {
   return async dispatch => {
+    servBlog.setToken(token)
     const newEntry = await servBlog.create(data)
+    console.log(newEntry)
     dispatch({
       type: 'BLOG-ADD',
       data: newEntry
@@ -30,8 +28,9 @@ export const newBlog = (data) => {
   }
 }
 
-export const updateBlog = (data) => {
+export const updateBlog = (data,token) => {
   return async dispatch => {
+    servBlog.setToken(token)
     await servBlog.update(data)
     dispatch({
       type: 'BLOG-UPDATE',
@@ -40,8 +39,9 @@ export const updateBlog = (data) => {
   }
 }
 
-export const deleteBlog = (data) => {
+export const deleteBlog = (data,token) => {
   return async dispatch => {
+    servBlog.setToken(token)
     await servBlog.remove(data)
     dispatch({
       type: 'BLOG-DELETE',
@@ -53,7 +53,6 @@ export const deleteBlog = (data) => {
 export const initBlog = () => {
   return async dispatch => {
     const data = await servBlog.getAll()
-    console.log(data)
     dispatch({
       type: 'BLOG-INIT',
       data
@@ -62,4 +61,4 @@ export const initBlog = () => {
   }
 }
 
-export default NotificationReducer
+export default BlogReducer

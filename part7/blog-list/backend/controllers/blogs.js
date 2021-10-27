@@ -18,8 +18,8 @@ blogRouter.post('/', m.userExtractor, async (req, resp, next) => {
 
   const result = await blog.save()
   await User.findByIdAndUpdate(user, { $push: { blogs: result._id } })
-
-  resp.status(201).json(result)
+  const dataToReturn = await result.populate('user', { username: 1, name: 1 })
+  resp.status(201).json(dataToReturn)
 })
 
 blogRouter.delete('/:id', m.userExtractor, async (req, resp, next) => {
