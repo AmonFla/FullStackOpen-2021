@@ -2,9 +2,9 @@ let timeId
 
 const NotificationReducer = (state = null, action) => {
   switch(action.type){
-  case 'SET-NOTIFICACTION':
+  case 'NOTIFICACTION-SET':
     return action.data
-  case 'CLEAN-NOTIFICATION':
+  case 'NOTIFICATION-CLEAN':
     return null
   default:
     return state
@@ -16,11 +16,11 @@ export const setNotification = (notificaction, time) => {
     clearTimeout(timeId)
     timeId = setTimeout(() => {
       dispatch({
-        type:'CLEAN-NOTIFICATION'
+        type:'NOTIFICATION-CLEAN'
       })
     }, time * 1000)
     dispatch({
-      type:'SET-NOTIFICACTION',
+      type:'NOTIFICACTION-SET',
       data: notificaction
     })
   }

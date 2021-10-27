@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setNotification } from '../reducer/NotificactionReducer'
+import {  newBlog } from '../reducer/BlogReducer'
 
-const BlogNew = ({ createBlog }) => {
+const BlogNew = (props) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
@@ -10,11 +12,12 @@ const BlogNew = ({ createBlog }) => {
   const onSubmit = async (event) => {
     event.preventDefault()
     const blog = { title, author, url }
-    createBlog(blog)
+    props.newBlog(blog)
+    props.setNotification({ content: `A new Blog ${blog.title} by ${blog.author} added`, className: 'success' }, 5)
     setAuthor('')
     setTitle('')
     setUrl('')
-
+    props.blogRef.current.toggleVisibility()
   }
 
   return (
@@ -38,7 +41,5 @@ const BlogNew = ({ createBlog }) => {
   )
 }
 
-BlogNew.propTypes = {
-  createBlog: PropTypes.func.isRequired
-}
-export default BlogNew
+
+export default connect(null, { setNotification,  newBlog })(BlogNew)
