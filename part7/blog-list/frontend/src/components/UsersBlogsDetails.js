@@ -1,35 +1,25 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { groupBy, keys } from 'lodash'
+import { groupBy } from 'lodash'
+import { useParams } from 'react-router-dom'
 
 const UsersBlogsDetails = (props) => {
-  console.log(props.blogs)
-  const usuarios = groupBy(props.blogs,'user.name')
+  const id = useParams().id
+  const data = groupBy(props.blogs,'user.id')[id]
+  console.log(data)
+
+  console.log(useParams().id)
 
   return(
     <>
-      <h2>Users</h2>
-      <Table striped>
-        <thead>
-          <tr>
-            <td></td>
-            <td>blogsCreated</td>
-          </tr>
-        </thead>
-        <tbody>
-          {keys(usuarios).map((author, index) => {return(
-            <tr key={index}>
-              <td>
-                {author}
-              </td>
-              <td>
-                {usuarios[author].length}
-              </td>
-            </tr>
-          )})}
-        </tbody>
-      </Table>
+      <h2>{data[0].user.name}</h2>
+      <ul>
+        {data.map( b => {
+          return(
+            <li key={b.id}>{b.title}</li>
+          )
+        })}
+      </ul>
     </>
   )
 }

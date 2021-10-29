@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { initBlog } from './reducer/BlogReducer'
+import { useDispatch } from 'react-redux'
+
 import './App.css'
 
 import Login from './components/Login'
 import Notification from './components/Notification'
 import BlogMain from './components/BlogMain'
+import UsersBlogsCountInfo from './components/UsersBlogsCountInfo'
+import UsersBlogsDetails from './components/UsersBlogsDetails'
+
 import servLogin from './service/login'
+
 import { setNotification } from './reducer/NotificactionReducer'
 import { setUser, cleanUser } from './reducer/UserReducer'
-import { connect } from 'react-redux'
-import UsersBlogsDetails from './components/UsersBlogsDetails'
-import { initBlog } from './reducer/BlogReducer'
-import { useDispatch } from 'react-redux'
+
 
 import {
   Switch,
@@ -67,8 +72,11 @@ function App (props) {
             <>
               <p> Loged user: {props.user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
               <Switch>
-                <Route path="/users">
+                <Route path="/users/:id">
                   <UsersBlogsDetails />
+                </Route>
+                <Route path="/users">
+                  <UsersBlogsCountInfo />
                 </Route>
                 <Route path="/">
                   <BlogMain />
