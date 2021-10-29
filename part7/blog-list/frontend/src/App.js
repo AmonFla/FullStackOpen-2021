@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initBlog } from './reducer/BlogReducer'
 import { useDispatch } from 'react-redux'
-import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import { Switch, Route, useRouteMatch, Link } from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
 import './App.css'
 
 import Login from './components/Login'
@@ -16,6 +17,7 @@ import servLogin from './service/login'
 
 import { setNotification } from './reducer/NotificactionReducer'
 import { setUser, cleanUser } from './reducer/UserReducer'
+
 
 
 
@@ -59,6 +61,25 @@ function App (props) {
 
   return (
     <div className="App">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#" as="span">
+              <Link className="navitem" to="/">Blogs</Link>
+            </Nav.Link>
+            <Nav.Link href="#" as="span">
+              <Link className="navitem" to="/notes">Users</Link>
+            </Nav.Link>
+            <Nav.Link href="#" as="span">
+              {props.user
+                ? <em>{props.user.name} logged in <button onClick={() => logoutHandle()}>Logout</button></em>
+                : null
+              }
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
       <header className="App-header">
         <h1>Blog List</h1>
       </header>
@@ -73,7 +94,6 @@ function App (props) {
             onSubmit={onLoginHandle}/>
           : (
             <>
-              <p> Loged user: {props.user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
               <Switch>
 
                 <Route path="/blogs/:id">
