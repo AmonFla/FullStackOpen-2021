@@ -1,19 +1,15 @@
 
 import React from 'react'
 import BlogItem from './BlogItem'
-import TogglableBlogItem from './TogglableBlogItem'
-import BlogDetail from './BlogDetail'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const BlogList = (props) =>
   [].concat(props.blogs)
     .map(blog => {
       return (
         <div key={blog.id} className="blogStyle">
-          <BlogItem blog={blog} />
-          <TogglableBlogItem buttonShow='view' buttonHide="hide">
-            <BlogDetail blog={blog} />
-          </TogglableBlogItem>
+          <Link to={`/blogs/${blog.id}`}><BlogItem blog={blog} /></Link>
         </div>
       )
     })

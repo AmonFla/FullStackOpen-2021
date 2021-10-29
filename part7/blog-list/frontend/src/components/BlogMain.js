@@ -7,6 +7,7 @@ import BlogList from './BlogList'
 const BlogMain = () => {
   const blogRef = useRef()
 
+
   return(
     <>
       <Toggleable buttonShow='Create new blog' buttonHide='Cancel action' ref={blogRef}>

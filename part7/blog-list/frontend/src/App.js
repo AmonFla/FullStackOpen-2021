@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initBlog } from './reducer/BlogReducer'
 import { useDispatch } from 'react-redux'
-
+import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import './App.css'
 
 import Login from './components/Login'
@@ -10,6 +10,7 @@ import Notification from './components/Notification'
 import BlogMain from './components/BlogMain'
 import UsersBlogsCountInfo from './components/UsersBlogsCountInfo'
 import UsersBlogsDetails from './components/UsersBlogsDetails'
+import BlogDetail from './components/BlogDetail'
 
 import servLogin from './service/login'
 
@@ -17,10 +18,7 @@ import { setNotification } from './reducer/NotificactionReducer'
 import { setUser, cleanUser } from './reducer/UserReducer'
 
 
-import {
-  Switch,
-  Route
-} from 'react-router-dom'
+
 
 function App (props) {
   const [username, setUsername] = useState('')
@@ -54,6 +52,11 @@ function App (props) {
     if (loggedUser) { props.setUser(JSON.parse(loggedUser)) }
   }, [])
 
+  const match = useRouteMatch('/blogs/:id')
+  const blog = match
+    ? props.blogs.find(blog => blog.id === match.params.id)
+    : null
+
   return (
     <div className="App">
       <header className="App-header">
@@ -72,6 +75,10 @@ function App (props) {
             <>
               <p> Loged user: {props.user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
               <Switch>
+
+                <Route path="/blogs/:id">
+                  <BlogDetail blog={blog}/>
+                </Route>
                 <Route path="/users/:id">
                   <UsersBlogsDetails />
                 </Route>
@@ -92,7 +99,8 @@ function App (props) {
 
 const stateToPropsMap = (state) => {
   return{
-    user: state.user
+    user: state.user,
+    blogs: state.blogs
   }
 }
 
