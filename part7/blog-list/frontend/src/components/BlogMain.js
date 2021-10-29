@@ -1,19 +1,11 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import BlogNew from './BlogNew'
 import Toggleable from './Togglable'
 import BlogList from './BlogList'
-import { connect } from 'react-redux'
-import { initBlog } from '../reducer/BlogReducer'
-import { useDispatch } from 'react-redux'
 
 
 const BlogMain = () => {
   const blogRef = useRef()
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(initBlog())
-  },[dispatch])
 
   return(
     <>
@@ -29,5 +21,5 @@ const BlogMain = () => {
   )
 }
 
-export default connect(null, { initBlog })(BlogMain)
+export default BlogMain
 

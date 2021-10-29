@@ -8,10 +8,23 @@ import servLogin from './service/login'
 import { setNotification } from './reducer/NotificactionReducer'
 import { setUser, cleanUser } from './reducer/UserReducer'
 import { connect } from 'react-redux'
+import UsersBlogsDetails from './components/UsersBlogsDetails'
+import { initBlog } from './reducer/BlogReducer'
+import { useDispatch } from 'react-redux'
+
+import {
+  Switch,
+  Route
+} from 'react-router-dom'
 
 function App (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(initBlog())
+  },[dispatch])
 
 
   const onLoginHandle = async (event) => {
@@ -53,7 +66,14 @@ function App (props) {
           : (
             <>
               <p> Loged user: {props.user.name} <button onClick={() => logoutHandle()}>Logout</button></p>
-              <BlogMain />
+              <Switch>
+                <Route path="/users">
+                  <UsersBlogsDetails />
+                </Route>
+                <Route path="/">
+                  <BlogMain />
+                </Route>
+              </Switch>
             </>
           )
         }
@@ -68,4 +88,4 @@ const stateToPropsMap = (state) => {
   }
 }
 
-export default connect(stateToPropsMap, { setNotification,setUser, cleanUser })(App)
+export default connect(stateToPropsMap, { setNotification,setUser, cleanUser, initBlog })(App)
