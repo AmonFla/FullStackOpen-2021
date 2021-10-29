@@ -41,4 +41,16 @@ const remove = async blog => {
   return response.data
 }
 
-export default { getAll, create, setToken, update, remove }
+const comments =  async  (comment, id) => {
+  const config = {
+    headers: { Authorization: token }
+  }
+  try{
+    const response = await axios.post(`${baseUrl}/${id}/comment`, comment, config)
+    return response.data
+  }catch(event){
+    return null
+  }
+}
+
+export default { getAll, create, setToken, update, remove, comments }

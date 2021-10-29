@@ -61,4 +61,16 @@ export const initBlog = () => {
   }
 }
 
+export const addComment = (comment, id ,token) => {
+  return async dispatch => {
+    servBlog.setToken(token)
+    const updatedData = await servBlog.comments(comment, id)
+    console.log(updatedData)
+    dispatch({
+      type: 'BLOG-UPDATE',
+      data:updatedData
+    })
+  }
+}
+
 export default BlogReducer

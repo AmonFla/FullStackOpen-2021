@@ -1,22 +1,34 @@
 
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { addComment } from '../reducer/BlogReducer'
 
-const Comment = ({ comments }) => {
+const Comment = ( props) => {
+  const [comment, setComment ] = useState()
 
-  if (!comments){
-    return null
+  const onSubmit = async (event) => {
+    event.preventDefault()
+    props.addComment({ comment }, props.id,props.user.token)
   }
 
   return(
     <div>
       <h3>Comments</h3>
+      <form onSubmit={onSubmit}>
+        <input type="text" value={comment} name="Comment" id="inputComment" onChange={({ target }) => setComment(target.value)} />
+        <button type="submit" id="buttonCreateCommand">Create</button>
+      </form>
       <ul>
-        {comments.map((comment,index) => <li key={index}>{comment}</li> )}
+        {props.comments.map((comment,index) => <li key={index}>{comment}</li> )}
       </ul>
     </div>
   )
 
 }
 
-
-export default Comment
+const mapStateToProps = (state) => {
+  return{
+    user: state.user
+  }
+}
+export default connect(mapStateToProps, { addComment })(Comment)

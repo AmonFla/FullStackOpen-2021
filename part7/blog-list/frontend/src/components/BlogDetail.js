@@ -29,7 +29,7 @@ const BlogDetail = (props) => {
       {props.blog.likes} likes <button onClick={() => likes()} id="buttonLike" >like</button><br />
        added by {props.blog.user.name} <br />
       {props.user.username === props.blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
-      <Comments comments={props.blog.comment} />
+      <Comments id={props.blog.id} comments={props.blog.comment} />
     </>
   )
 }
