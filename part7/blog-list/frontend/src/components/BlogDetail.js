@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateBlog, deleteBlog } from '../reducer/BlogReducer'
 import { useHistory } from 'react-router-dom'
+import  Comments  from './Comments'
 
 const BlogDetail = (props) => {
   const history = useHistory()
@@ -28,6 +29,7 @@ const BlogDetail = (props) => {
       {props.blog.likes} likes <button onClick={() => likes()} id="buttonLike" >like</button><br />
        added by {props.blog.user.name} <br />
       {props.user.username === props.blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
+      <Comments comments={props.blog.comment} />
     </>
   )
 }

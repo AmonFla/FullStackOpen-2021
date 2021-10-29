@@ -28,7 +28,15 @@ blogRouter.delete('/:id', m.userExtractor, async (req, resp, next) => {
     return resp.status(401).json({ error: 'You are not allowed to delete' })
   }
   blog.remove()
+  await User.findByIdAndUpdate(req.user, { $pull: { blogs: req.params.id } })
+
   return resp.status(204).end()
+})
+
+blogRouter.post('/:id/comment', async (req, resp, next) => {
+  console.log(req.params.id)
+  const data = await Blog.findByIdAndUpdate(req.params.id, { $push: { comment: req.body.comment } }, { new: true })
+  resp.json(data)
 })
 
 blogRouter.put('/:id', async (req, resp, next) => {
