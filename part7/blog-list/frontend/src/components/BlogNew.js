@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setNotification } from '../reducer/NotificactionReducer'
 import {  newBlog } from '../reducer/BlogReducer'
+import { Form, Button  } from 'react-bootstrap'
+
 
 const BlogNew = (props) => {
   const [title, setTitle] = useState('')
@@ -23,20 +25,36 @@ const BlogNew = (props) => {
   return (
     <>
       <h3>Create new blog</h3>
-      <form onSubmit={onSubmit}>
-        <div>
-                Title : <input type="text" value={title} name="Title" id="inputTitle" onChange={({ target }) => setTitle(target.value)} />
-        </div>
-        <div>
-                Author: <input type="text" value={author} name="Author" id="inputAuthor" onChange={({ target }) => setAuthor(target.value)} />
-        </div>
-        <div>
-                Url: <input type="text" value={url} name="Url" id="inputUrl" onChange={({ target }) => setUrl(target.value)} />
-        </div>
-        <div>
-          <button type="submit" id="buttonCreateBlog">Create</button>
-        </div>
-      </form>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            size="sm"
+            type="text"
+            value={title}
+            id="inputTitle"
+            onChange={({ target }) => setTitle(target.value)}  />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Label>Autor</Form.Label>
+          <Form.Control
+            size="sm"
+            type="text"
+            value={author}
+            id="inputAuthor"
+            onChange={({ target }) => setAuthor(target.value)} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formTitle">
+          <Form.Label>URL</Form.Label>
+          <Form.Control
+            size="sm"
+            type="text"
+            value={url}
+            id="inputUrl"
+            onChange={({ target }) => setUrl(target.value)} />
+        </Form.Group>
+        <Button size="sm" variant="outline-primary" type="submit" id="buttonCreateBlog">Create</Button>
+      </Form>
     </>
   )
 }

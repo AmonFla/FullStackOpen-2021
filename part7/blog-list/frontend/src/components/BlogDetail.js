@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { updateBlog, deleteBlog } from '../reducer/BlogReducer'
 import { useHistory } from 'react-router-dom'
 import  Comments  from './Comments'
+import {  Button , Card } from 'react-bootstrap'
 
 const BlogDetail = (props) => {
   const history = useHistory()
@@ -24,12 +25,19 @@ const BlogDetail = (props) => {
   return (
     <>
       <h2>{props.blog.title} by {props.blog.title}</h2>
+      <Card>
+        <Card.Body>
 
-      {props.blog.url}<br />
-      {props.blog.likes} likes <button onClick={() => likes()} id="buttonLike" >like</button><br />
-       added by {props.blog.user.name} <br />
-      {props.user.username === props.blog.user.username ? <button onClick={() => remove()} >remove</button> : ('') }
-      <Comments id={props.blog.id} comments={props.blog.comment} />
+          <p>{props.blog.url}</p>
+          <p>{props.blog.likes} likes <Button size="sm" onClick={() => likes()} ariant="info" >like</Button></p>
+          <p> added by {props.blog.user.name} </p>
+          <p>{props.user.username === props.blog.user.username ? <Button variant="danger" size="sm" onClick={() => remove()} >remove</Button> : ('') }</p>
+          <br />
+          <br />
+          <Comments id={props.blog.id} comments={props.blog.comment} />
+
+        </Card.Body>
+      </Card>
     </>
   )
 }

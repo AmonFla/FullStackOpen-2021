@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Alert  } from 'react-bootstrap'
+
 const Notification = (props) => {
   if (props.notification === null) {
     return null
   }
 
   return (
-    <div className={`notificaction ${props.notification.className}`}>
+    <Alert variant={`${props.notification.className}`}>
       {props.notification.content}
-    </div>
+    </Alert>
   )
 }
 

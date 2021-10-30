@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { groupBy } from 'lodash'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import { ListGroup } from 'react-bootstrap'
 
 const UsersBlogsDetails = (props) => {
   const id = useParams().id
@@ -9,17 +10,16 @@ const UsersBlogsDetails = (props) => {
   console.log(data)
 
   console.log(useParams().id)
-
   return(
     <>
       <h2>{data[0].user.name}</h2>
-      <ul>
+      <ListGroup as="ol" numbered>
         {data.map( b => {
           return(
-            <li key={b.id}>{b.title}</li>
+            <ListGroup.Item as="li" key={b.id}><Link to={`/blogs/${b.id}`}>{b.title}</Link></ListGroup.Item>
           )
         })}
-      </ul>
+      </ListGroup>
     </>
   )
 }

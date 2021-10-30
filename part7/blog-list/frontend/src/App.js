@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { initBlog } from './reducer/BlogReducer'
 import { useDispatch } from 'react-redux'
 import { Switch, Route, useRouteMatch, Link } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
-import './App.css'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
 import Login from './components/Login'
 import Notification from './components/Notification'
@@ -39,7 +38,7 @@ function App (props) {
       localStorage.setItem('user', JSON.stringify(user))
       props.setUser(user)
     } catch (exception) {
-      props.setNotification({ content: 'Wrong Credentials', className: 'error' },5)
+      props.setNotification({ content: 'Wrong Credentials', className: 'danger' },5)
     }
   }
 
@@ -60,7 +59,7 @@ function App (props) {
     : null
 
   return (
-    <div className="App">
+    <Container>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -69,7 +68,7 @@ function App (props) {
               <Link className="navitem" to="/">Blogs</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link className="navitem" to="/notes">Users</Link>
+              <Link className="navitem" to="/users">Users</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
               {props.user
@@ -80,10 +79,10 @@ function App (props) {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <header className="App-header">
+      <div>
         <h1>Blog List</h1>
-      </header>
-      <div className="App-body">
+      </div>
+      <div >
         <Notification />
         { props.user === null
           ? <Login
@@ -113,7 +112,7 @@ function App (props) {
           )
         }
       </div>
-    </div>
+    </Container>
   )
 }
 

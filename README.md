@@ -94,5 +94,6 @@ Git de entregas de los ejercicios del curs
   * country-hook: utilización de hook personalizados, dentro del cual se comunica con axios
   * routed-anecdotes: implementación de navegación por rutas
   * ultimate-hooks: creación de un hook personalizado para la comunicación con dos RestApi
+  * BlogList: Código de la parte4 y 5 mejorado con bootstrap, routeo, redux
   
 
