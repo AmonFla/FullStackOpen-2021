@@ -48,8 +48,8 @@ URL: https://fullstackopen.com
   * [Cypress E2E Testing](https://docs.cypress.io/guides/overview/why-cypress#In-a-nutshell)
   * [Jest](https://jestjs.io/)
 * Others
-  * [Seguridad](https://cybersecuritybase.mooc.fi/module-2.1)
-  * [Top 10 fallas de seguridad](https://owasp.org/www-project-top-ten/)
+  * [Security](https://cybersecuritybase.mooc.fi/module-2.1)
+  * [Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/)
   * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
   * [Microservices](https://martinfowler.com/articles/microservices.html)
   * [Do more with less.‍Serverless](https://www.serverless.com/)
