@@ -1,9 +1,9 @@
 # FullStackOpen-2021 
 
+Fullstack submission git
 URL: https://fullstackopen.com 
-Git de entregas de los ejercicios del curs
 
-## Lecturas adicionales
+## Additional Links
 * Web Development Basics
   * [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
   * [CSS Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
@@ -47,14 +47,14 @@ Git de entregas de los ejercicios del curs
 * Testing
   * [Cypress E2E Testing](https://docs.cypress.io/guides/overview/why-cypress#In-a-nutshell)
   * [Jest](https://jestjs.io/)
-* Otros
+* Others
   * [Seguridad](https://cybersecuritybase.mooc.fi/module-2.1)
   * [Top 10 fallas de seguridad](https://owasp.org/www-project-top-ten/)
   * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
   * [Microservices](https://martinfowler.com/articles/microservices.html)
   * [Do more with less.‍Serverless](https://www.serverless.com/)
   * [reactiflux - Discord Group](https://www.reactiflux.com/)
-* Bibliotecas
+* Libraries
   * [Lodash - funciones para la manipulación de datos complejos](https://www.npmjs.com/package/lodash)
   * [Ramda - funcional like programming](https://ramdajs.com/)
   * [date-fns - manipulación de fechas](https://github.com/date-fns/date-fns)
@@ -65,35 +65,35 @@ Git de entregas de los ejercicios del curs
   * [inmutable - deja objetos inmutables](https://github.com/facebook/immutable-js/)
   * [immer - deja objetos inmutables ](https://github.com/mweststrate/immer)
   * [Google Analytics](https://github.com/react-ga/react-ga)
-## Herramientas
+## Tools
 * [Web Sequence Diagrams](https://www.websequencediagrams.com/)
 * JSON server
 	npm install -g json-server
 	npx json-server --port 3001 --watch db.json
 * [RESTful Client for VC](https://github.com/Huachao/vscode-restclient)
 
-## Código Realizado
-* Part1 - Frontend realizado en ReactJs
-  * anecdotes: Aplicación de valoración de citas, pudiendo navegarlas aleatoriamente y votarlas. Indicando la más votada
-  * courseinfo: Aplicación simple para mostrar datos de un array y un acumulador
-  * unicafe: Aplicación simple para dar feedback y calcular estádisticas
-* Part2 - Frontend realizado en ReactJs
-  * countries: Aplicación que muestra un buscador de países, mostrando información del seleccionada y clima actual
-  * courseinfo: Ampliación del courseinfo de Part1
-  * phonebook: Aplicación de contactos teléfonicos. Se almacena el nombre y número de teléfono, luego se puede buscar y borrar. Usa una api RESTFull con json-server
+## Code
+* Part1 - Frontend with ReactJs
+  * anecdotes: Appointment appraisal application, being able to browse them randomly and vote for them. Indicating the most voted
+  * courseinfo: Simple application to display data from an array and an accumulator
+  * unicafe: Simple application to give feedback and calculate statistics
+* Part2 - Frontend with ReactJs
+  * countries: Application that shows a country search engine, showing selected information and current weather
+  * courseinfo: Extension of the courseinfo of Part1
+  * phonebook: Application of telephone contacts. Name and phone number are stored, then can be searched and deleted. Use a RESTFull api with json-server
 * Part3 - Bakcend con NodeJs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
-* Part4 - Backend con NodeJs
-  * blog: Api RESTful para tener un directorio de entradas de blogs. Usa JWT para el posteo y borrado de datos.
-* Part5 - Frontend con React
-  * blog: Frontend de la Parte4 con testing unitario y end-to-end.
+* Part4 - Backend with NodeJs
+  * blog: RESTful api to have a directory of blog posts. Use JWT for posting and deleting data.
+* Part5 - Frontend with React
+  * blog: Frontend of Part4 with unit testing and end-to-end.
 * Part6 - Fronend with redux
-  * redux-anecdotes: Aplicación de valoración de citas agregando, filtrando y votalas usando redux y axios. 
-  * unicafe: Aplicación simple para dar feedback con redux
+  * redux-anecdotes: Appointment rating app by aggregating, filtering and rating them using redux and axios.
+  * unicafe: Simple app to give feedback with redux
 * Part7 - React: Routes, Hooks
-  * country-hook: utilización de hook personalizados, dentro del cual se comunica con axios
-  * routed-anecdotes: implementación de navegación por rutas
-  * ultimate-hooks: creación de un hook personalizado para la comunicación con dos RestApi
-  * BlogList: Código de la parte4 y 5 mejorado con bootstrap, routeo, redux
+  * country-hook: use of custom hooks, within which it communicates with axios
+  * routed-anecdotes: route navigation implementation
+  * ultimate-hooks: creating a custom hook for communication with two RestApi
+  * BlogList: Code from part4 and 5 improved with bootstrap, routing, redux
   
 
