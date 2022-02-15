@@ -81,7 +81,7 @@ URL: https://fullstackopen.com
   * countries: Application that shows a country search engine, showing selected information and current weather
   * courseinfo: Extension of the courseinfo of Part1
   * phonebook: Application of telephone contacts. Name and phone number are stored, then can be searched and deleted. Use a RESTFull api with json-server
-* Part3 - Bakcend con NodeJs
+* Part3 - Bakcend with NodeJs
   * phonebook: RESTFull api para phonebook de la part2, tambien se tiene la web en forma estática
 * Part4 - Backend with NodeJs
   * blog: RESTful api to have a directory of blog posts. Use JWT for posting and deleting data.
